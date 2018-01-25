@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,12 +79,16 @@
 
 
 
+<meta name="description" content="Stupid is as stupid does. Miracles happen everyday.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="My first blog">
+<meta property="og:title" content="Jimmy1996">
 <meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
-<meta property="og:site_name" content="My first blog">
+<meta property="og:site_name" content="Jimmy1996">
+<meta property="og:description" content="Stupid is as stupid does. Miracles happen everyday.">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first blog">
+<meta name="twitter:title" content="Jimmy1996">
+<meta name="twitter:description" content="Stupid is as stupid does. Miracles happen everyday.">
 
 
 
@@ -120,7 +124,7 @@
 
 
 
-  <title>Archive | My first blog</title>
+  <title>Archive | Jimmy1996</title>
   
 
 
@@ -132,7 +136,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -150,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My first blog</span>
+        <span class="site-title">Jimmy1996</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -181,6 +185,36 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -252,7 +286,7 @@
         
             <a class="post-title-link" href="/2018/01/24/first/" itemprop="url">
               
-                <span itemprop="name">Untitled</span>
+                <span itemprop="name">My first blog</span>
               
             </a>
         
@@ -350,8 +384,12 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Jimmy" />
+            
               <p class="site-author-name" itemprop="name">Jimmy</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">Stupid is as stupid does. Miracles happen everyday.</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -368,7 +406,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -376,11 +432,41 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Jimmy1996" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/6049915346" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baidu.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -467,6 +553,8 @@
   
 
 
+  
+
 
 
 
@@ -505,6 +593,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -583,5 +676,9 @@
 
   
 
+  <% if theme.canvas_nest %}
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex = "-2" count = "99"
+  src="//cdn.bootcss.com/canvas-next.js/1.0.0/canvas-nest.min.js"></script>
+  <% endif %>
 </body>
 </html>
