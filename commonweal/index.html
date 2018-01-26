@@ -473,7 +473,10 @@
     
 
   </div>
-
+ <% if theme.canvas_nest %}
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex = "-2" count = "99"
+  src="//cdn.bootcss.com/canvas-next.js/1.0.0/canvas-nest.min.js"></script>
+  <% endif %>
   
 
 <script type="text/javascript">
@@ -620,9 +623,6 @@
 
   
 
-  <% if theme.canvas_nest %}
-  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex = "-2" count = "99"
-  src="//cdn.bootcss.com/canvas-next.js/1.0.0/canvas-nest.min.js"></script>
-  <% endif %>
+
 </body>
 </html>
