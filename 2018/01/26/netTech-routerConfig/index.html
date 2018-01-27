@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Jimmy1996">
 <meta property="og:description" content="分以下5点 最基本的配置 设置路由器的时区、日期和时钟 设置路由器接口的IP地址 设置密码 创建静态hostname表，然后使用该表对直连路由器进行telnet访问">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-26T09:30:21.862Z">
+<meta property="og:updated_time" content="2018-01-27T04:23:57.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="路由器基本配置">
 <meta name="twitter:description" content="分以下5点 最基本的配置 设置路由器的时区、日期和时钟 设置路由器接口的IP地址 设置密码 创建静态hostname表，然后使用该表对直连路由器进行telnet访问">
@@ -352,6 +352,9 @@
 
           
 
+
+          
+
         </div>
       </header>
     
@@ -370,10 +373,10 @@
 <li>设置路由器的时区、日期和时钟</li>
 <li>设置路由器接口的IP地址</li>
 <li>设置密码</li>
-<li>创建静态hostname表，然后使用该表对直连路由器进行telnet访问</li>
+<li>创建静态hostname表，然后使用该表对直连路由器进行telnet访问<a id="more"></a>
+</li>
 </ul>
 <hr>
-<a id="more"></a>
 <h3 id="如下"><a href="#如下" class="headerlink" title="如下"></a>如下</h3><h4 id="最基本的配置"><a href="#最基本的配置" class="headerlink" title="最基本的配置"></a>最基本的配置</h4><p>重命名路由器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#hostname r2</span><br></pre></td></tr></table></figure></p>
 <p>关闭域名查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r2(config)#no ip domain-lookup</span><br></pre></td></tr></table></figure></p>
 <p>设置输入同步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r2(config)#line console 0</span><br><span class="line">r2(config-line)#logging synchronous</span><br></pre></td></tr></table></figure></p>
@@ -670,6 +673,7 @@
     
 
   </div>
+  
   <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex = "-2" count = "99"
   src="//cdn.bootcss.com/canvas-next.js/1.0.0/canvas-nest.min.js"></script>
 
