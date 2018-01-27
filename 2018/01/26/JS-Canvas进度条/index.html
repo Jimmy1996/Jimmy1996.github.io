@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js,canvas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="实现效果">
+<meta name="keywords" content="js,canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas实现多个圆形进度条显示百分比，并绑定各自的click事件">
+<meta property="og:url" content="http://yoursite.com/2018/01/26/JS-Canvas进度条/index.html">
+<meta property="og:site_name" content="Jimmy1996">
+<meta property="og:description" content="实现效果">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/01/26/JS-Canvas进度条/jindutiao.png">
+<meta property="og:updated_time" content="2018-01-26T09:11:04.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas实现多个圆形进度条显示百分比，并绑定各自的click事件">
+<meta name="twitter:description" content="实现效果">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/26/JS-Canvas进度条/jindutiao.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/26/JS-Canvas进度条/"/>
+
+
+
+
+
+  <title>Canvas实现多个圆形进度条显示百分比，并绑定各自的click事件 | Jimmy1996</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ec50d82e1a34e6dbbbbd76b156365f82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jimmy1996</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    <div>
+
+    </div>
+      
+        <p class="site-subtitle">Live as you like.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/26/JS-Canvas进度条/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy1996">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Canvas实现多个圆形进度条显示百分比，并绑定各自的click事件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T15:47:57+08:00">
+                2018-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/01/26/JS-Canvas进度条/jindutiao.png" alt="&quot;进度条&quot;"></h2><a id="more"></a>
+<h3 id="制作单个圆形进度条"><a href="#制作单个圆形进度条" class="headerlink" title="制作单个圆形进度条"></a>制作单个圆形进度条</h3><ul>
+<li>详情请参照<a href="http://www.cnblogs.com/moqiutao/p/6430079.html" target="_blank" rel="noopener">HTML5效果：Canvas实现圆形进度条并显示数字百分比</a></li>
+</ul>
+<hr>
+<h3 id="制作多个圆形进度条"><a href="#制作多个圆形进度条" class="headerlink" title="制作多个圆形进度条"></a>制作多个圆形进度条</h3><h4 id="html代码"><a href="#html代码" class="headerlink" title="html代码"></a>html代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"contain"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!---定义一个div块，用于放置canvas---&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h4><blockquote>
+<p>保存到circle.js中，并放置在与html文件相同的根目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">function initThis()&#123;</span><br><span class="line">         //初始化数据,json数组</span><br><span class="line">         //说明：id为标识id（唯一）,name为名字,num为进度 </span><br><span class="line">    	 var init= [&#123;&quot;num&quot;:100,&quot;name&quot;:&quot;task-2&quot;,&quot;id&quot;:1&#125;,   </span><br><span class="line">    	            &#123;&quot;num&quot;:100,&quot;name&quot;:&quot;task-3&quot;,&quot;id&quot;:2&#125;,                                                                  </span><br><span class="line">    	            &#123;&quot;num&quot;:100,&quot;name&quot;:&quot;task-4&quot;,&quot;id&quot;:3&#125;,</span><br><span class="line">    	            &#123;&quot;num&quot;:60,&quot;name&quot;:&quot;task-5&quot;,&quot;id&quot;:4&#125;];</span><br><span class="line">    	                   </span><br><span class="line">    	 var container = document.getElementById(&apos;contain&apos;);	 //找到装canvas的div块</span><br><span class="line">    	 </span><br><span class="line"></span><br><span class="line">         $.each(init,function(n,task)&#123;    </span><br><span class="line">               //JQuery遍历json数组 ，task为数组中的第n个元素。遍历时完成整个圆形进度条的绘制</span><br><span class="line">        	   //alert(n+&apos; &apos;+task.name);    	</span><br><span class="line">        	       </span><br><span class="line">    		   var Can = document.createElement(&apos;canvas&apos;); //create一个新的canvas,并命名为Can</span><br><span class="line">    		   container.appendChild(Can);      //往div块中添加这一个名为Can的canvas</span><br><span class="line">    		   Can.id = task.id;                //设置这一个canvas的属性:id,name以及宽度和高度</span><br><span class="line">    		   Can.value =  task.id;</span><br><span class="line">    		   Can.name = task.name;</span><br><span class="line">    		   Can.width = 350;</span><br><span class="line">    		   Can.height = 350;</span><br><span class="line">    		   </span><br><span class="line">    		   var thisCanvas = document.getElementById(task.id); </span><br><span class="line">    		   //从dom中get这一个canvas(通过其id)</span><br><span class="line">    		   </span><br><span class="line">    	       aGraph(thisCanvas,task.num,task.name);    </span><br><span class="line">    	       //绘制这一个canvas对应的圆形进度条</span><br><span class="line">    		   </span><br><span class="line">    		   //绑定canvas事件</span><br><span class="line">    		   Can.onclick = function()&#123;</span><br><span class="line">    		       alert(&quot;My name is:&quot;+ task.name);</span><br><span class="line">    			&#125;</span><br><span class="line">          &#125;);     	   </span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">/*函数功能：绘制单个圆形进度条（无动画效果）*/</span><br><span class="line">function aGraph(canvas,number,taskName)&#123;	</span><br><span class="line">				</span><br><span class="line">				/*参数说明*/</span><br><span class="line">				/*canvas：canvas对象*/</span><br><span class="line">				/*number：进度值*/</span><br><span class="line">				/*taskName:所要显示的文字信息*/	</span><br><span class="line">				    </span><br><span class="line">     			context = canvas.getContext(&apos;2d&apos;),//获取画图环境，指明为2d</span><br><span class="line">     			centerX = canvas.width/2,         //Canvas中心对象点x轴坐标</span><br><span class="line">     			centerY = canvas.height/2,        //Canvas中心点y轴坐标</span><br><span class="line">     			rad = Math.PI*2/100,              //将360度分成100份,那么每一份就是rad度</span><br><span class="line">     		//绘制蓝色外圈</span><br><span class="line">     		function blueCircle(n)&#123;    			</span><br><span class="line">     			context.save();</span><br><span class="line">     			context.strokeStyle = &quot;#0BFFC4&quot;; //设置描边样式</span><br><span class="line">     			context.lineWidth = 5;           //设置线宽</span><br><span class="line">     			context.beginPath();             //路径开始</span><br><span class="line">     			context.arc(centerX, centerY, 75 ,-Math.PI/2,-Math.PI/2+n*rad, false);                                         </span><br><span class="line">     		   //用于绘制圆弧context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)</span><br><span class="line">     			context.stroke();               //绘制</span><br><span class="line">     			context.closePath();            //路径结束</span><br><span class="line">     			context.restore();</span><br><span class="line">     		</span><br><span class="line">     		&#125;</span><br><span class="line">     		//绘制白色外圈</span><br><span class="line">     		function whiteCircle()&#123;</span><br><span class="line">     			context.save();</span><br><span class="line">     			context.beginPath();</span><br><span class="line">     			context.strokeStyle = &quot;#01241B&quot;;</span><br><span class="line">     			context.arc(centerX, centerY, 75 , 0, Math.PI*2, false);</span><br><span class="line">     			context.stroke();</span><br><span class="line">     			context.closePath();</span><br><span class="line">     			context.restore();</span><br><span class="line">     		&#125;  </span><br><span class="line">     		//百分比文字绘制</span><br><span class="line">     		function text(n)&#123;</span><br><span class="line">     			context.save();              //save和restore可以保证样式属性只运用于该段canvas元素</span><br><span class="line">     			context.strokeStyle = &quot;#fff&quot;; //设置描边样式</span><br><span class="line">     			context.font = &quot;20px Arial&quot;;  //设置字体大小和字体</span><br><span class="line">     			//绘制字体，并且指定位置</span><br><span class="line">     			context.strokeText( n +&quot;%&quot; , centerX-17, centerY-13);</span><br><span class="line">     			context.strokeText( taskName , centerX-27, centerY+30);</span><br><span class="line">     			context.stroke();             //执行绘制</span><br><span class="line">     			context.restore();</span><br><span class="line">     		&#125; </span><br><span class="line">     		</span><br><span class="line">     		//动画绘制</span><br><span class="line">     		(function drawFrame()&#123;</span><br><span class="line">     	    	window.requestAnimationFrame(drawFrame);</span><br><span class="line">     	    	context.clearRect(0, 0, canvas.width, canvas.height);</span><br><span class="line">     			whiteCircle();</span><br><span class="line">     			text(number);		</span><br><span class="line">     			blueCircle(number);</span><br><span class="line">     		&#125;());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h4 id="绘制多个圆形进度条的完整代码"><a href="#绘制多个圆形进度条的完整代码" class="headerlink" title="绘制多个圆形进度条的完整代码"></a>绘制多个圆形进度条的完整代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Canvas实现多个圆形进度条显示百分比和文字信息，并绑定各自的click事件&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;jquery-3.2.1.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!---引用所需要的JQuery.js。这里，我把jquery.js下载后，放到与html文件一样的文件夹下了。---&gt;</span><br><span class="line">&lt;script src=&quot;circle.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; &lt;!--引入绘制圆形进度条的js文件--&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#contain&#123;left:3.5%;width:100%;height:100%;overflow-y:scroll;</span><br><span class="line">		</span><br><span class="line">canvas&#123;margin-top:3%;margin-left:3%;margin-bottom:0.5%;</span><br><span class="line">	   background-color:#000;;</span><br><span class="line">       position:relative;&#125;</span><br><span class="line">	</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body onload=&quot;initThis();&quot;&gt; </span><br><span class="line">&lt;!---在页面加载时，调用initThis（）函数，完成对圆形进度条的绘制---&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;contain&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="小记："><a href="#小记：" class="headerlink" title="小记："></a>小记：</h3><blockquote>
+<p>采用这一个初始化多个圆形进度条的方法，是没有动画效果的，绘制进度条的代码有点长。<br>如果只是想要绘制一个圆形进度条，可参照本文的 制作单个进度条（有动画效果）。<br>还可以用JQurey的一款轻量级圆形指示器插件radialIndicator。参照<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201502171389.html" target="_blank" rel="noopener">jQuery轻量级圆形进度指示器插件</a>。</p>
+<p>这篇小记，希望对大家有帮助。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"><li class="fa fa-tag"></li>js</a>
+
+          
+            <a href="/tags/canvas/" rel="tag"><li class="fa fa-tag"></li>canvas</a>
+
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/26/HTML-初识html/" rel="next" title="HTML之初识html（一）">
+                <i class="fa fa-chevron-left"></i> HTML之初识html（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/26/JS-forceMap/" rel="prev" title="力导图——节点平均分布（通过固定节点坐标）">
+                力导图——节点平均分布（通过固定节点坐标） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Jimmy" />
+            
+              <p class="site-author-name" itemprop="name">Jimmy</p>
+              <p class="site-description motion-element" itemprop="description">Live as you like.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Jimmy1996" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/6049915346" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baidu.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现效果"><span class="nav-number">1.</span> <span class="nav-text">实现效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作单个圆形进度条"><span class="nav-number">1.</span> <span class="nav-text">制作单个圆形进度条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作多个圆形进度条"><span class="nav-number">2.</span> <span class="nav-text">制作多个圆形进度条</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html代码"><span class="nav-number">2.1.</span> <span class="nav-text">html代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js代码"><span class="nav-number">2.2.</span> <span class="nav-text">js代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制多个圆形进度条的完整代码"><span class="nav-number">2.3.</span> <span class="nav-text">绘制多个圆形进度条的完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小记："><span class="nav-number">3.</span> <span class="nav-text">小记：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jimmy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+<span class="post-meta-divider">|</span>
+
+<div class="powered-by">
+<i class="fa fa-user"></i><span id="busuanzi_container_site_pv">
+  Total visited <span id="busuanzi_value_site_pv"></span> times
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex = "-2" count = "99"
+  src="//cdn.bootcss.com/canvas-next.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
